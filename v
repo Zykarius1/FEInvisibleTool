@@ -1,4 +1,8 @@
-local offset = 1100
+local players = game:GetService('Players')
+local localPlayer = players.LocalPlayer
+local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+local stuff = function()
+	local offset = 1100
 local invisible = game.Players.LocalPlayer
 local grips = {}
 local heldTool
@@ -114,3 +118,9 @@ game.Players.LocalPlayer.Character.ChildAdded:Connect(
         end
     end
                       )
+end
+localPlayer.CharacterAdded:Connect(function(c)
+	character = c
+	stuff()
+end)
+stuff()
